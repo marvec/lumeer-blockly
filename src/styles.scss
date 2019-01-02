@@ -1,0 +1,20 @@
+/* Add application styles & imports to this file! */
+body {
+  font-family: 'Lato';
+}
+
+
+text.blocklyText {
+  font-family: Lato;
+
+  &.text-primary {
+    fill: #2c3e50;
+    color: #2c3e50;
+  }
+
+  &.blocklyFontAwesome {
+    font-family: 'Font Awesome 5 Pro';
+
+  }
+}
+
