@@ -137,10 +137,24 @@ export class BlocklyComponent implements OnInit, OnDestroy {
   }
 
   private onWorkspaceChange(changeEvent): void {
+    const this_ = BlocklyComponent.THESE.get(changeEvent.workspaceId);
+    const workspace = this_.workspace;
+
+    // prevent deletion of the initial variables
+    if (changeEvent instanceof Blockly.Events.Create) {
+      console.log('created');
+      const block = workspace.getBlockById(changeEvent.blockId);
+      if (block.type.startsWith(BlocklyComponent.VARIABLES_GET_PREFIX)) {
+        if (this_.variables.map(v => v.name).indexOf(block.getField('VAR').getVariable().name) >= 0) {
+          block.setEditable(false);
+        }
+      }
+    }
+
     if (changeEvent.newParentId) { // is there a new connection made?
-      const block = this.workspace.getBlockById(changeEvent.blockId);
+      const block = workspace.getBlockById(changeEvent.blockId);
       const blockOutputType = (block.outputConnection && block.outputConnection.check_ && block.outputConnection.check_[0]) ? block.outputConnection.check_[0] : '';
-      const parentBlock = this.workspace.getBlockById(changeEvent.newParentId);
+      const parentBlock = workspace.getBlockById(changeEvent.newParentId);
 
       // is it a document being connected to ...
       if (blockOutputType.endsWith(BlocklyComponent.DOCUMENT_TYPE_SUFFIX)) {
@@ -151,14 +165,17 @@ export class BlocklyComponent implements OnInit, OnDestroy {
           const counterpart = linkParts[0] === blockOutputType.replace(BlocklyComponent.DOCUMENT_TYPE_SUFFIX, '') ? linkParts[1] : linkParts[0];
           parentBlock.setOutput(true, counterpart + BlocklyComponent.DOCUMENT_ARRAY_TYPE_SUFFIX);
         }
-      } else { // disconnect invalid foreach input
-        if (parentBlock.type === BlocklyComponent.FOREACH_DOCUMENT_ARRAY) {
-          if (parentBlock.getInput('LIST').connection.db_[0].sourceBlock_.id === block.id) {
-            if (!blockOutputType.endsWith(BlocklyComponent.DOCUMENT_ARRAY_TYPE_SUFFIX)) {
-              parentBlock.getInput('LIST').connection.disconnect();
-            } else {
-              parentBlock.getField('VAR').getVariable().type = blockOutputType.replace(BlocklyComponent.ARRAY_TYPE_SUFFIX, '');
-            }
+      }
+
+      // disconnect invalid foreach input
+      if (parentBlock.type === BlocklyComponent.FOREACH_DOCUMENT_ARRAY) {
+        if (parentBlock.getInput('LIST').connection.targetConnection.sourceBlock_.id === block.id) {
+          if (!blockOutputType.endsWith(BlocklyComponent.DOCUMENT_ARRAY_TYPE_SUFFIX)) {
+            parentBlock.getInput('LIST').connection.disconnect();
+          } else {
+            const newType = blockOutputType.replace(BlocklyComponent.ARRAY_TYPE_SUFFIX, '');
+            this_.updateVariableType(workspace, parentBlock.getField('VAR').getVariable(), newType);
+            parentBlock.getField('VAR').setTypes_([newType], newType);
           }
         }
       }
@@ -166,7 +183,6 @@ export class BlocklyComponent implements OnInit, OnDestroy {
       if ((blockOutputType.endsWith(BlocklyComponent.DOCUMENT_TYPE_SUFFIX) || blockOutputType.endsWith(BlocklyComponent.DOCUMENT_ARRAY_TYPE_SUFFIX)) && parentBlock.type === BlocklyComponent.GET_ATTRIBUTE) {
         const options = parentBlock.getField('ATTR').getOptions();
         const originalLength = options.length;
-        const this_ = BlocklyComponent.THESE.get(changeEvent.workspaceId);
         const collection = this_.getCollection(blockOutputType.split('_')[0]);
 
         let defaultValue = '';
@@ -186,14 +202,13 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         options.splice(0, originalLength);
       }
     } else if (changeEvent.oldParentId) { // reset output type and disconnect when linked document is removed
-      const block = this.workspace.getBlockById(changeEvent.blockId);
+      const block = workspace.getBlockById(changeEvent.blockId);
       const blockOutputType = block.outputConnection.check_[0] || '';
-      const parentBlock = this.workspace.getBlockById(changeEvent.oldParentId);
+      const parentBlock = workspace.getBlockById(changeEvent.oldParentId);
 
       if (blockOutputType.endsWith(BlocklyComponent.DOCUMENT_TYPE_SUFFIX)) {
         if (parentBlock.type.endsWith(BlocklyComponent.LINK_TYPE_SUFFIX) && parentBlock.outputConnection) {
           parentBlock.setOutput(true, 'unknown');
-          console.log('setting parent output unknown');
           if (parentBlock.outputConnection) {
             try {
               parentBlock.outputConnection.disconnect();
@@ -209,12 +224,34 @@ export class BlocklyComponent implements OnInit, OnDestroy {
       if (parentBlock.type === BlocklyComponent.GET_ATTRIBUTE) {
         const options = parentBlock.getField('ATTR').getOptions();
         const originalLength = options.length;
-        parentBlock.getField('ATTR').setValue('N/A');
+        parentBlock.getField('ATTR').setValue('?');
         options.push(['?', '?']);
         options.splice(0, originalLength);
       }
     }
     console.log(changeEvent);
+  }
+
+  private updateVariableType(workspace, variable, newType): void {
+    const variableMap = workspace.getVariableMap();
+    const type = variable.type;
+
+    if (type === newType) {
+      return;
+    }
+
+    // Remove the variable from the original list of type
+    const variableList = variableMap.getVariablesOfType(type);
+    const variableIndex = variableList.indexOf(variable);
+    variableMap.variableMap_[type].splice(variableIndex, 1);
+
+    // And put it to the new one (either brand new, or existing one)
+    variable.type = newType;
+    if (!variableMap.variableMap_[newType]) {
+      variableMap.variableMap_[newType] = [variable];
+    } else {
+      variableMap.variableMap_[newType].push(variable);
+    }
   }
 
   private registerDocumentVariables(workspace): any[] {
