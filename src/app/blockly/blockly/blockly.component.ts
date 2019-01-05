@@ -60,6 +60,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     const coreVarTypes = this.variables.map(variable => variable.collectionId + BlocklyComponent.DOCUMENT_TYPE_SUFFIX);
+    const collectionTypes = this.collections.map(c => c.id + BlocklyComponent.DOCUMENT_TYPE_SUFFIX);
     const collection = this.getCollection(this.variables[0].collectionId);
     const color = this.shadeColor(collection.color, 0.7);
 
@@ -172,8 +173,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
               {
                 type: 'input_value',
                 name: 'DOCUMENT',
-                // only initial documents can be written to
-                check: coreVarTypes
+                check: [...coreVarTypes, ...collectionTypes]
               },
               {
                 type: 'input_value',
@@ -183,7 +183,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
             ],
             previousStatement: null,
             nextStatement: null,
-            colour: '#18bc9c',
+            colour: '#00B388',
           }
         );
       }
