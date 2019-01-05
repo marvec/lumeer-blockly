@@ -52,14 +52,48 @@ export class BlocklyComponent implements OnInit, OnDestroy {
   private static readonly ARRAY_TYPE_SUFFIX = '_array';
   private static readonly FOREACH_DOCUMENT_ARRAY = 'foreach_document_array';
   private static readonly GET_ATTRIBUTE = 'get_attribute';
+  private static readonly SET_ATTRIBUTE = 'set_attribute';
   private static readonly VARIABLES_GET_PREFIX = 'variables_get_';
+  private static readonly UNKNOWN = 'unknown';
 
   constructor() {}
 
   public ngOnInit() {
+    const coreVarTypes = this.variables.map(variable => variable.collectionId + BlocklyComponent.DOCUMENT_TYPE_SUFFIX);
+    const collection = this.getCollection(this.variables[0].collectionId);
+    const color = this.shadeColor(collection.color, 0.7);
+
     Blockly.HSV_VALUE = 0.85;
 
     this.workspace = Blockly.inject('blockly', {toolbox: toolbox.BLOCKLY_TOOLBOX});
+
+    Blockly.Blocks['statement_container'] = {
+      init: function () {
+        this.jsonInit({
+          type: 'statement_container',
+          message0: "On document update in %1 %2 %3 do %4",
+          args0: [
+            {
+              type: 'field_fa',
+              icon: collection.icon,
+              iconColor: collection.color
+            },
+            {
+              type: 'field_label',
+              text: collection.name
+            },
+            {
+              type: 'input_dummy'
+            },
+            {
+              type: 'input_statement',
+              name: 'COMMANDS'
+            }
+          ],
+          colour: color,
+        });
+      }
+    };
 
     Blockly.Blocks[BlocklyComponent.FOREACH_DOCUMENT_ARRAY] = {
       init: function() {
@@ -111,11 +145,47 @@ export class BlocklyComponent implements OnInit, OnDestroy {
               name: 'DOCUMENT'
             }
           ],
-          output: null,
-          colour: '#18bc9c',
+          output: '',
+          colour: '#00B388',
           tooltip: '',
           helpUrl: ''
         });
+      }
+    };
+
+    Blockly.Blocks[BlocklyComponent.SET_ATTRIBUTE] = {
+      init: function() {
+        this.jsonInit({
+            type: BlocklyComponent.SET_ATTRIBUTE,
+            message0: 'set %1 of %2 to %3',
+            args0: [
+              {
+                type: 'field_dropdown',
+                name: 'ATTR',
+                options: [
+                  [
+                    '?',
+                    '?'
+                  ]
+                ]
+              },
+              {
+                type: 'input_value',
+                name: 'DOCUMENT',
+                // only initial documents can be written to
+                check: coreVarTypes
+              },
+              {
+                type: 'input_value',
+                name: 'VALUE',
+                check: ['', 'Number', 'String', 'Boolean'] // only regular variables
+              }
+            ],
+            previousStatement: null,
+            nextStatement: null,
+            colour: '#18bc9c',
+          }
+        );
       }
     };
 
@@ -130,6 +200,11 @@ export class BlocklyComponent implements OnInit, OnDestroy {
 
     this.variables.forEach(variable =>
       this.workspace.createVariable(variable.name, variable.collectionId + BlocklyComponent.DOCUMENT_TYPE_SUFFIX, null));
+
+    const block = this.workspace.newBlock('statement_container');
+    block.setDeletable(false);
+    block.initSvg();
+    block.render();
   }
 
   public ngOnDestroy(): void {
@@ -140,14 +215,21 @@ export class BlocklyComponent implements OnInit, OnDestroy {
     const this_ = BlocklyComponent.THESE.get(changeEvent.workspaceId);
     const workspace = this_.workspace;
 
-    // prevent deletion of the initial variables
     if (changeEvent instanceof Blockly.Events.Create) {
-      console.log('created');
       const block = workspace.getBlockById(changeEvent.blockId);
+
+      // make sure the default blocks do not offer documents etc in variable dropdowns
+      this_.ensureEmptyTypes(block);
+
+      // prevent deletion of the initial variables
       if (block.type.startsWith(BlocklyComponent.VARIABLES_GET_PREFIX)) {
         if (this_.variables.map(v => v.name).indexOf(block.getField('VAR').getVariable().name) >= 0) {
           block.setEditable(false);
         }
+      }
+
+      if (block.type === BlocklyComponent.GET_ATTRIBUTE) {
+        block.outputConnection.check_ = [BlocklyComponent.UNKNOWN];
       }
     }
 
@@ -180,7 +262,11 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         }
       }
 
-      if ((blockOutputType.endsWith(BlocklyComponent.DOCUMENT_TYPE_SUFFIX) || blockOutputType.endsWith(BlocklyComponent.DOCUMENT_ARRAY_TYPE_SUFFIX)) && parentBlock.type === BlocklyComponent.GET_ATTRIBUTE) {
+      // populate document attribute names in document attr getter and setter
+      if ((blockOutputType.endsWith(BlocklyComponent.DOCUMENT_TYPE_SUFFIX) ||
+          blockOutputType.endsWith(BlocklyComponent.DOCUMENT_ARRAY_TYPE_SUFFIX)) &&
+          (parentBlock.type === BlocklyComponent.GET_ATTRIBUTE ||
+          (parentBlock.type === BlocklyComponent.SET_ATTRIBUTE))) {
         const options = parentBlock.getField('ATTR').getOptions();
         const originalLength = options.length;
         const collection = this_.getCollection(blockOutputType.split('_')[0]);
@@ -200,36 +286,75 @@ export class BlocklyComponent implements OnInit, OnDestroy {
 
         parentBlock.getField('ATTR').setValue(defaultValue);
         options.splice(0, originalLength);
+
+        if (parentBlock.type === BlocklyComponent.GET_ATTRIBUTE) {
+          const newType = block.type.endsWith('_link') ? ['Array'] : [''];
+          if (parentBlock.outputConnection.check_[0] !== newType[0]) {
+            this_.tryDisconnect(parentBlock, parentBlock.outputConnection);
+          }
+          parentBlock.outputConnection.check_ = newType;
+        }
       }
     } else if (changeEvent.oldParentId) { // reset output type and disconnect when linked document is removed
       const block = workspace.getBlockById(changeEvent.blockId);
-      const blockOutputType = block.outputConnection.check_[0] || '';
-      const parentBlock = workspace.getBlockById(changeEvent.oldParentId);
+      if (block) { // when replacing a shadow block, the original block might not exist anymore
+        const blockOutputType = (block.outputConnection && block.outputConnection.check_ && block.outputConnection.check_[0]) ? block.outputConnection.check_[0] : '';
+        const parentBlock = workspace.getBlockById(changeEvent.oldParentId);
 
-      if (blockOutputType.endsWith(BlocklyComponent.DOCUMENT_TYPE_SUFFIX)) {
-        if (parentBlock.type.endsWith(BlocklyComponent.LINK_TYPE_SUFFIX) && parentBlock.outputConnection) {
-          parentBlock.setOutput(true, 'unknown');
-          if (parentBlock.outputConnection) {
-            try {
-              parentBlock.outputConnection.disconnect();
-              parentBlock.moveBy(Blockly.SNAP_RADIUS, Blockly.SNAP_RADIUS);
-            } catch (e) {
-              // nps, already disconnected
-            }
+        // document being removed from link
+        if (blockOutputType.endsWith(BlocklyComponent.DOCUMENT_TYPE_SUFFIX)) {
+          if (parentBlock.type.endsWith(BlocklyComponent.LINK_TYPE_SUFFIX) && parentBlock.outputConnection) {
+            parentBlock.setOutput(true, BlocklyComponent.UNKNOWN);
+            this_.tryDisconnect(parentBlock, parentBlock.outputConnection);
           }
         }
-      }
 
-      // reset list of attributes upon disconnection
-      if (parentBlock.type === BlocklyComponent.GET_ATTRIBUTE) {
-        const options = parentBlock.getField('ATTR').getOptions();
-        const originalLength = options.length;
-        parentBlock.getField('ATTR').setValue('?');
-        options.push(['?', '?']);
-        options.splice(0, originalLength);
+        // document or link being removed from attr getter
+        if (blockOutputType.endsWith(BlocklyComponent.DOCUMENT_TYPE_SUFFIX) || blockOutputType.endsWith(BlocklyComponent.LINK_TYPE_SUFFIX)) {
+          if (parentBlock.type === BlocklyComponent.GET_ATTRIBUTE && parentBlock.outputConnection) {
+            parentBlock.setOutput(true, BlocklyComponent.UNKNOWN);
+            this_.tryDisconnect(parentBlock, parentBlock.outputConnection);
+          }
+        }
+
+        // reset list of attributes upon disconnection
+        if (parentBlock.type === BlocklyComponent.GET_ATTRIBUTE) {
+          const options = parentBlock.getField('ATTR').getOptions();
+          const originalLength = options.length;
+          parentBlock.getField('ATTR').setValue('?');
+          options.push(['?', '?']);
+          options.splice(0, originalLength);
+        }
+
+        if (parentBlock.type === BlocklyComponent.SET_ATTRIBUTE && parentBlock.getInput('DOCUMENT').connection.targetConnection === null) {
+          const options = parentBlock.getField('ATTR').getOptions();
+          const originalLength = options.length;
+          parentBlock.getField('ATTR').setValue('?');
+          options.push(['?', '?']);
+          options.splice(0, originalLength);
+        }
       }
     }
     console.log(changeEvent);
+  }
+
+  private ensureEmptyTypes(block): void {
+    for (let i = 0, input; input = block.inputList[i]; i++) {
+      for (let j = 0, field; field = input.fieldRow[j]; j++) {
+        if (field instanceof Blockly.FieldVariable && field.variableTypes === null) {
+          field.setTypes_([''], '');
+        }
+      }
+    }
+  }
+
+  private tryDisconnect(block, connection): void {
+    try {
+      connection.disconnect();
+    } catch (e) {
+      //nps
+    }
+    block.moveBy(Blockly.SNAP_RADIUS, Blockly.SNAP_RADIUS);
   }
 
   private updateVariableType(workspace, variable, newType): void {
@@ -273,6 +398,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
 
     xmlList.push(Blockly.Xml.textToDom('<xml><sep gap="48"></sep></xml>').firstChild);
     xmlList.push(Blockly.Xml.textToDom('<xml><block type="' + BlocklyComponent.GET_ATTRIBUTE + '"></block></xml>').firstChild);
+    xmlList.push(Blockly.Xml.textToDom('<xml><block type="' + BlocklyComponent.SET_ATTRIBUTE + '"></block></xml>').firstChild);
 
     return xmlList;
   }
@@ -375,7 +501,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
                 ]
               }
             ],
-            output: 'unknown',
+            output: BlocklyComponent.UNKNOWN,
             colour: '#F7F7F7',
             tooltip: '',
             helpUrl: '',

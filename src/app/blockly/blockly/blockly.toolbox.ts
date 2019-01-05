@@ -19,15 +19,15 @@
 
 export const BLOCKLY_TOOLBOX = `
 <xml id="toolbox" style="display: none">
-  <category name="Documents" custom="DOCUMENT_VARIABLES">    
+  <category name="Documents" custom="DOCUMENT_VARIABLES" colour="#00B388">    
   </category>
-  <category name="Links" custom="LINKS">    
+  <category name="Links" custom="LINKS" colour="#2c3e50">    
   </category>
-  <category name="Loops">
+  <category name="Loops" colour="#e74c3c">
     <block type="foreach_document_array"></block>
   </category>
   <sep></sep>
-  <category name="Controls">
+  <category name="Controls" colour="%{BKY_LOOPS_HUE}">
     <block type="controls_if"></block>
     <block type="controls_ifelse"></block>
     <block type="controls_whileUntil"></block>
@@ -57,7 +57,7 @@ export const BLOCKLY_TOOLBOX = `
     </block>
     <block type="controls_repeat"></block>
   </category>
-  <category name="Logic">
+  <category name="Logic" colour="%{BKY_LOGIC_HUE}">
     <block type="logic_compare"></block>
     <block type="logic_operation"></block>
     <block type="logic_boolean"></block>
@@ -65,7 +65,7 @@ export const BLOCKLY_TOOLBOX = `
     <block type="logic_null"></block>
     <block type="logic_ternary"></block>
   </category>
-  <category name="Math">
+  <category name="Math" colour="%{BKY_MATH_HUE}">
     <block type="math_number"></block>
     <block type="math_arithmetic">
       <value name="A">
@@ -159,7 +159,70 @@ export const BLOCKLY_TOOLBOX = `
     </block>
     <block type="math_random_float"></block>
   </category>
-  <category name="Variables" custom="VARIABLE">    
+  <category name="Text" colour="%{BKY_TEXTS_HUE}">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_append">
+      <value name="TEXT">
+        <shadow type="text"></shadow>
+      </value>
+    </block>
+    <block type="text_length">
+      <value name="VALUE">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_isEmpty">
+      <value name="VALUE">
+        <shadow type="text">
+          <field name="TEXT"></field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_indexOf">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">{textVariable}</field>
+        </block>
+      </value>
+      <value name="FIND">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_charAt">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR">{textVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="text_getSubstring">
+      <value name="STRING">
+        <block type="variables_get">
+          <field name="VAR">{textVariable}</field>
+        </block>
+      </value>
+    </block>
+    <block type="text_changeCase">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="text_trim">
+      <value name="TEXT">
+        <shadow type="text">
+          <field name="TEXT">abc</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category name="Variables" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">    
   </category>
 </xml>
 `;
