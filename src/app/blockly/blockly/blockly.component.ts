@@ -42,7 +42,11 @@ export class BlocklyComponent implements OnInit, OnDestroy {
   @ViewChild('blockly')
   private blocklyElement: ElementRef;
 
+  public code = '';
+
   private workspace: any;
+
+  private lumeerVar: string;
 
   public static THESE = new Map();
 
@@ -96,9 +100,14 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         });
       }
     };
+    let lumeerVar = '';
     Blockly.JavaScript[BlocklyComponent.STATEMENT_CONTAINER] = function(block) {
-      return Blockly.JavaScript.statementToCode(block, 'COMMANDS') + '\n';
+      lumeerVar = Blockly.JavaScript.variableDB_.getDistinctName(
+        'lumeer', Blockly.Variables.NAME_TYPE);
+      const code = 'var ' + lumeerVar + ' = Polyglot.import(\'lumeer\');\n';
+      return code + Blockly.JavaScript.statementToCode(block, 'COMMANDS') + '\n';
     };
+    this.lumeerVar = lumeerVar;
 
     Blockly.Blocks[BlocklyComponent.FOREACH_DOCUMENT_ARRAY] = {
       init: function() {
@@ -166,7 +175,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         return '';
       }
 
-      const code = 'lumeer.getDocumentAttribute(' + argument0 + ', \'' + attrId + '\')';
+      const code = lumeerVar + '.getDocumentAttribute(' + argument0 + ', \'' + attrId + '\')';
 
       return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
     };
@@ -214,9 +223,9 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         return '';
       }
 
-      const code = 'lumeer.setDocumentAttribute(' + argument0 + ', \'' + attrId + '\', ' + argument1 + ')';
+      const code = lumeerVar + '.setDocumentAttribute(' + argument0 + ', \'' + attrId + '\', ' + argument1 + ')';
 
-      return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+      return code;
     };
 
     BlocklyComponent.THESE.set(this.workspace.id, this); // TODO: is there a better way?
@@ -365,7 +374,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         }
       }
     }
-    console.log(changeEvent);
+    this_.code = Blockly.JavaScript.workspaceToCode(workspace);
   }
 
   private ensureEmptyTypes(block): void {
@@ -534,12 +543,13 @@ export class BlocklyComponent implements OnInit, OnDestroy {
               }
             ],
             output: BlocklyComponent.UNKNOWN,
-            colour: '#F7F7F7',
+            colour: '#e6ebf1',
             tooltip: '',
             helpUrl: '',
           });
         }
       };
+      const lumeerVar = this_.lumeerVar;
       Blockly.JavaScript[type] = function(block) {
         const argument0 = Blockly.JavaScript.valueToCode(block, 'DOCUMENT', Blockly.JavaScript.ORDER_ASSIGNMENT) || null;
 
@@ -547,7 +557,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
           return '';
         }
 
-        const code = 'lumeer.getLinkedDocuments(' + argument0 + ', \'' + linkTypeId + '\')';
+        const code = lumeerVar + '.getLinkedDocuments(' + argument0 + ', \'' + linkTypeId + '\')';
 
         return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
       };

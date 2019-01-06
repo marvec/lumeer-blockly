@@ -222,6 +222,33 @@ export const BLOCKLY_TOOLBOX = `
       </value>
     </block>
   </category>
+  <category name="Lists" colour="260">
+    <block type="lists_create_with">
+      <mutation items="0"></mutation>
+    </block>
+    <block type="lists_create_with"></block>
+    <block type="lists_repeat">
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">5</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="lists_length"></block>
+    <block type="lists_isEmpty"></block>
+    <block type="lists_indexOf"></block>
+    <block type="lists_getIndex"></block>
+    <block type="lists_setIndex"></block>
+    <block type="lists_getSublist"></block>
+    <block type="lists_split">
+      <value name="DELIM">
+        <shadow type="text">
+          <field name="TEXT">,</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="lists_sort"></block>
+  </category>
   <category name="Variables" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">    
   </category>
 </xml>
