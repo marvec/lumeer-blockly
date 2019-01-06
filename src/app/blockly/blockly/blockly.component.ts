@@ -55,6 +55,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
   private static readonly SET_ATTRIBUTE = 'set_attribute';
   private static readonly VARIABLES_GET_PREFIX = 'variables_get_';
   private static readonly UNKNOWN = 'unknown';
+  private static readonly STATEMENT_CONTAINER = 'statement_container';
 
   constructor() {}
 
@@ -68,10 +69,10 @@ export class BlocklyComponent implements OnInit, OnDestroy {
 
     this.workspace = Blockly.inject('blockly', {toolbox: toolbox.BLOCKLY_TOOLBOX});
 
-    Blockly.Blocks['statement_container'] = {
+    Blockly.Blocks[BlocklyComponent.STATEMENT_CONTAINER] = {
       init: function () {
         this.jsonInit({
-          type: 'statement_container',
+          type: BlocklyComponent.STATEMENT_CONTAINER,
           message0: "On document update in %1 %2 %3 do %4",
           args0: [
             {
@@ -94,6 +95,9 @@ export class BlocklyComponent implements OnInit, OnDestroy {
           colour: color,
         });
       }
+    };
+    Blockly.JavaScript[BlocklyComponent.STATEMENT_CONTAINER] = function(block) {
+      return Blockly.JavaScript.statementToCode(block, 'COMMANDS') + '\n';
     };
 
     Blockly.Blocks[BlocklyComponent.FOREACH_DOCUMENT_ARRAY] = {
@@ -124,6 +128,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         });
       }
     };
+    Blockly.JavaScript[BlocklyComponent.FOREACH_DOCUMENT_ARRAY] = Blockly.JavaScript['controls_forEach'];
 
     Blockly.Blocks[BlocklyComponent.GET_ATTRIBUTE] = {
       init: function() {
@@ -152,6 +157,18 @@ export class BlocklyComponent implements OnInit, OnDestroy {
           helpUrl: ''
         });
       }
+    };
+    Blockly.JavaScript[BlocklyComponent.GET_ATTRIBUTE] = function(block) {
+      const argument0 = Blockly.JavaScript.valueToCode(block, 'DOCUMENT', Blockly.JavaScript.ORDER_ASSIGNMENT) || null;
+      const attrId = block.getFieldValue('ATTR');
+
+      if (!argument0) {
+        return '';
+      }
+
+      const code = 'lumeer.getDocumentAttribute(' + argument0 + ', \'' + attrId + '\')';
+
+      return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
     };
 
     Blockly.Blocks[BlocklyComponent.SET_ATTRIBUTE] = {
@@ -188,6 +205,19 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         );
       }
     };
+    Blockly.JavaScript[BlocklyComponent.SET_ATTRIBUTE] = function(block) {
+      const argument0 = Blockly.JavaScript.valueToCode(block, 'DOCUMENT', Blockly.JavaScript.ORDER_ASSIGNMENT) || null;
+      const argument1 = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ASSIGNMENT) || null;
+      const attrId = block.getFieldValue('ATTR');
+
+      if (!argument0 || !argument1) {
+        return '';
+      }
+
+      const code = 'lumeer.setDocumentAttribute(' + argument0 + ', \'' + attrId + '\', ' + argument1 + ')';
+
+      return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+    };
 
     BlocklyComponent.THESE.set(this.workspace.id, this); // TODO: is there a better way?
 
@@ -201,10 +231,10 @@ export class BlocklyComponent implements OnInit, OnDestroy {
     this.variables.forEach(variable =>
       this.workspace.createVariable(variable.name, variable.collectionId + BlocklyComponent.DOCUMENT_TYPE_SUFFIX, null));
 
-    const block = this.workspace.newBlock('statement_container');
-    block.setDeletable(false);
-    block.initSvg();
-    block.render();
+    const containerBlock = this.workspace.newBlock(BlocklyComponent.STATEMENT_CONTAINER);
+    containerBlock.setDeletable(false);
+    containerBlock.initSvg();
+    containerBlock.render();
   }
 
   public ngOnDestroy(): void {
@@ -439,6 +469,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
           });
         }
       };
+      Blockly.JavaScript[BlocklyComponent.VARIABLES_GET_PREFIX + type] = Blockly.JavaScript['variables_get'];
     }
   }
 
@@ -466,6 +497,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
 
   private ensureLinkTypeBlock(this_: BlocklyComponent, linkType: LinkType) {
     const type = this_.getBlocklyLinkType(linkType);
+    const linkTypeId = linkType.id;
 
     if (!Blockly.Blocks[type]) {
       const c1 = this_.getCollection(linkType.collectionIds[0]);
@@ -494,7 +526,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
               },
               {
                 type: 'input_value',
-                name: 'NAME',
+                name: 'DOCUMENT',
                 check: [
                   linkType.collectionIds[0] + BlocklyComponent.DOCUMENT_TYPE_SUFFIX,
                   linkType.collectionIds[1] + BlocklyComponent.DOCUMENT_TYPE_SUFFIX
@@ -508,6 +540,18 @@ export class BlocklyComponent implements OnInit, OnDestroy {
           });
         }
       };
+      Blockly.JavaScript[type] = function(block) {
+        const argument0 = Blockly.JavaScript.valueToCode(block, 'DOCUMENT', Blockly.JavaScript.ORDER_ASSIGNMENT) || null;
+
+        if (!argument0) {
+          return '';
+        }
+
+        const code = 'lumeer.getLinkedDocuments(' + argument0 + ', \'' + linkTypeId + '\')';
+
+        return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+      };
+
     }
   }
 
