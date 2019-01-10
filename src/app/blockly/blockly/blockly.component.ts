@@ -100,14 +100,14 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         });
       }
     };
-    let lumeerVar = '';
+    const this_ = this;
     Blockly.JavaScript[BlocklyComponent.STATEMENT_CONTAINER] = function(block) {
-      lumeerVar = Blockly.JavaScript.variableDB_.getDistinctName(
+      const lumeerVar = Blockly.JavaScript.variableDB_.getDistinctName(
         'lumeer', Blockly.Variables.NAME_TYPE);
+      this_.lumeerVar = lumeerVar;
       const code = 'var ' + lumeerVar + ' = Polyglot.import(\'lumeer\');\n';
       return code + Blockly.JavaScript.statementToCode(block, 'COMMANDS') + '\n';
     };
-    this.lumeerVar = lumeerVar;
 
     Blockly.Blocks[BlocklyComponent.FOREACH_DOCUMENT_ARRAY] = {
       init: function() {
@@ -175,7 +175,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         return '';
       }
 
-      const code = lumeerVar + '.getDocumentAttribute(' + argument0 + ', \'' + attrId + '\')';
+      const code = this_.lumeerVar + '.getDocumentAttribute(' + argument0 + ', \'' + attrId + '\')';
 
       return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
     };
@@ -223,7 +223,7 @@ export class BlocklyComponent implements OnInit, OnDestroy {
         return '';
       }
 
-      const code = lumeerVar + '.setDocumentAttribute(' + argument0 + ', \'' + attrId + '\', ' + argument1 + ')';
+      const code = this_.lumeerVar + '.setDocumentAttribute(' + argument0 + ', \'' + attrId + '\', ' + argument1 + ')';
 
       return code;
     };
@@ -315,12 +315,12 @@ export class BlocklyComponent implements OnInit, OnDestroy {
           options.push([attribute.name, attribute.id]);
 
           if (attribute.id === collection.defaultAttributeId) {
-            defaultValue = attribute.name;
+            defaultValue = attribute.id;
           }
         });
 
         if (!defaultValue) {
-          defaultValue = collection.attributes[0].name;
+          defaultValue = collection.attributes[0].id;
         }
 
         parentBlock.getField('ATTR').setValue(defaultValue);
