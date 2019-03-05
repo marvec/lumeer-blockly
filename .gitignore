@@ -61,3 +61,4 @@ typings/
 .next
 
 .idea/
+build/google-blockly/advanced_build/blockly.*.js
