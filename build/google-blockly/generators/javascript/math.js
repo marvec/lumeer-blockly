@@ -240,7 +240,7 @@ Blockly.JavaScript['math_on_list'] = function(block) {
     case 'SUM':
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_MEMBER) || '[]';
-      code = list + '.reduce(function(x, y) {return x + y;})';
+      code = list + '.reduce(function(x, y) {return x + y;}, 0)';
       break;
     case 'MIN':
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
@@ -258,7 +258,7 @@ Blockly.JavaScript['math_on_list'] = function(block) {
           'mathMean',
           ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
               '(myList) {',
-            '  return myList.reduce(function(x, y) {return x + y;}) / ' +
+            '  return myList.reduce(function(x, y) {return x + y;}, 0) / ' +
                   'myList.length;',
             '}']);
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
@@ -332,7 +332,7 @@ Blockly.JavaScript['math_on_list'] = function(block) {
               '(numbers) {',
             '  var n = numbers.length;',
             '  if (!n) return null;',
-            '  var mean = numbers.reduce(function(x, y) {return x + y;}) / n;',
+            '  var mean = numbers.reduce(function(x, y) {return x + y;}, 0) / n;',
             '  var variance = 0;',
             '  for (var j = 0; j < n; j++) {',
             '    variance += Math.pow(numbers[j] - mean, 2);',
