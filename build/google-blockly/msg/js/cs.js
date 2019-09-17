@@ -445,6 +445,8 @@ Blockly.Msg["TOOLBOX_TEXT"] = "Texty";
 Blockly.Msg["TOOLBOX_LISTS"] = "Seznamy";
 Blockly.Msg["TOOLBOX_VARIABLES"] = "Proměnné";
 Blockly.Msg["TOOLBOX_DATE"] = "Datum";
+Blockly.Msg["TOOLBOX_UTILS"] = "Pomůcky";
+Blockly.Msg["TOOLBOX_COLOUR"] = "Barvy";
 Blockly.Msg["BLOCK_STATEMENT_CONTAINER"] = "Se záznamem v %1 %2 %3 proveď %4";
 Blockly.Msg["BLOCK_VALUE_CONTAINER"] = "%1 %2 = %3";
 Blockly.Msg["BLOCK_LINK_CONTAINER"] = "%1%2 %3 = %4";
@@ -461,6 +463,15 @@ Blockly.Msg["BLOCK_VARIABLE"] = "%1 %2 %3";
 Blockly.Msg["BLOCK_LINK_VARIABLE"] = "%1%2 %3 %4";
 Blockly.Msg["BLOCK_LINK_INSTANCE"] = "%1 %2%3 %4 %5";
 Blockly.Msg["BLOCK_LINK_INSTANCE_ATTRS"] = "atributy";
-Blockly.Msg["BLOCK_DATE_TO_MS"] = "datum na ms %1";
-Blockly.Msg["BLOCK_MS_TO_DATE"] = "ms na datum %1";
+Blockly.Msg["BLOCK_DATE_TO_MS"] = "datum na milisekundy %1";
+Blockly.Msg["BLOCK_MS_TO_DATE"] = "milisekundy na datum %1";
 Blockly.Msg["BLOCK_DATE_NOW"] = "nyní";
+
+Blockly.Msg["BLOCK_DATE_MILLIS_TO_UNIT"] = "millisekundy na %1 %2";
+Blockly.Msg["BLOCK_SEQUENCE_NEXT"] = "další číslo z %1 zarovnat na %2 čísel";
+Blockly.Msg["BLOCK_CURRENT_USER"] = "aktuální uživatel";
+
+Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
+Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
+Blockly.Msg["SEQUENCE_OPTIONS_HOURS"] = "hodiny";
+Blockly.Msg["SEQUENCE_OPTIONS_DAYS"] = "dny";

@@ -445,6 +445,8 @@ Blockly.Msg["TOOLBOX_TEXT"] = "Text";
 Blockly.Msg["TOOLBOX_LISTS"] = "Lists";
 Blockly.Msg["TOOLBOX_VARIABLES"] = "Variables";
 Blockly.Msg["TOOLBOX_DATE"] = "Date";
+Blockly.Msg["TOOLBOX_UTILS"] = "Utils";
+Blockly.Msg["TOOLBOX_COLOUR"] = "Colours";
 Blockly.Msg["BLOCK_STATEMENT_CONTAINER"] = "With record in %1 %2 %3 do %4";
 Blockly.Msg["BLOCK_VALUE_CONTAINER"] = "%1 %2 = %3";
 Blockly.Msg["BLOCK_LINK_CONTAINER"] = "%1%2 %3 = %4";
@@ -461,6 +463,15 @@ Blockly.Msg["BLOCK_VARIABLE"] = "%1 %2 %3";
 Blockly.Msg["BLOCK_LINK_VARIABLE"] = "%1%2 %3 %4";
 Blockly.Msg["BLOCK_LINK_INSTANCE"] = "%1 %2%3 %4 %5";
 Blockly.Msg["BLOCK_LINK_INSTANCE_ATTRS"] = "attrs. of";
-Blockly.Msg["BLOCK_DATE_TO_MS"] = "date to ms %1";
-Blockly.Msg["BLOCK_MS_TO_DATE"] = "ms to date %1";
+Blockly.Msg["BLOCK_DATE_TO_MS"] = "date to millis %1";
+Blockly.Msg["BLOCK_MS_TO_DATE"] = "millis to date %1";
 Blockly.Msg["BLOCK_DATE_NOW"] = "now";
+
+Blockly.Msg["BLOCK_DATE_MILLIS_TO_UNIT"] = "milliseconds to %1 %2";
+Blockly.Msg["BLOCK_SEQUENCE_NEXT"] = "next no. from %1 align to %2 digit(s)";
+Blockly.Msg["BLOCK_CURRENT_USER"] = "current user";
+
+Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
+Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";
+Blockly.Msg["SEQUENCE_OPTIONS_HOURS"] = "hours";
+Blockly.Msg["SEQUENCE_OPTIONS_DAYS"] = "days";

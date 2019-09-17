@@ -4,6 +4,7 @@ goog.require('Blockly.Msg.cs');
 // Core
 goog.require('Blockly');
 // Blocks
+goog.require('Blockly.Constants.Colour');
 goog.require('Blockly.Constants.Logic');
 goog.require('Blockly.Constants.Loops');
 goog.require('Blockly.Constants.Math');
