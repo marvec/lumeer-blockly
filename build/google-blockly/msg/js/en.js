@@ -448,6 +448,7 @@ Blockly.Msg["TOOLBOX_DATE"] = "Date";
 Blockly.Msg["TOOLBOX_UTILS"] = "Utils";
 Blockly.Msg["TOOLBOX_COLOUR"] = "Colours";
 Blockly.Msg["BLOCK_STATEMENT_CONTAINER"] = "With record in %1 %2 %3 do %4";
+Blockly.Msg["BLOCK_LINK_STATEMENT_CONTAINER"] = "With link in %1%2 %3 %4 do %5";
 Blockly.Msg["BLOCK_VALUE_CONTAINER"] = "%1 %2 = %3";
 Blockly.Msg["BLOCK_LINK_CONTAINER"] = "%1%2 %3 = %4";
 Blockly.Msg["BLOCK_FOREACH_DOCUMENT"] = "for each record %1 in %2";

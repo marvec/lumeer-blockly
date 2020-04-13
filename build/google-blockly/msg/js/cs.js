@@ -448,6 +448,7 @@ Blockly.Msg["TOOLBOX_DATE"] = "Datum";
 Blockly.Msg["TOOLBOX_UTILS"] = "Pomůcky";
 Blockly.Msg["TOOLBOX_COLOUR"] = "Barvy";
 Blockly.Msg["BLOCK_STATEMENT_CONTAINER"] = "Se záznamem v %1 %2 %3 proveď %4";
+Blockly.Msg["BLOCK_LINK_STATEMENT_CONTAINER"] = "S vazbou v %1%2 %3 %4 proveď %5";
 Blockly.Msg["BLOCK_VALUE_CONTAINER"] = "%1 %2 = %3";
 Blockly.Msg["BLOCK_LINK_CONTAINER"] = "%1%2 %3 = %4";
 Blockly.Msg["BLOCK_FOREACH_DOCUMENT"] = "pro každý záznam %1 v %2";
