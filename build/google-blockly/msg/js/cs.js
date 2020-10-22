@@ -466,7 +466,10 @@ Blockly.Msg["BLOCK_LINK_INSTANCE"] = "%1 %2%3 %4 %5";
 Blockly.Msg["BLOCK_LINK_INSTANCE_ATTRS"] = "atributy";
 Blockly.Msg["BLOCK_DATE_TO_MS"] = "datum na milisekundy %1";
 Blockly.Msg["BLOCK_MS_TO_DATE"] = "milisekundy na datum %1";
-Blockly.Msg["BLOCK_DATE_NOW"] = "nyní";
+Blockly.Msg["BLOCK_DATE_NOW"] = "nyní (ms)";
+Blockly.Msg["BLOCK_CURRENT_DATE"] = "nyní (datum)";
+Blockly.Msg["BLOCK_PARSE_DATE"] = "převést řetězec %1 formátovaný jako %2 v jazyce %3 na datum";
+Blockly.Msg["BLOCK_FORMAT_DATE"] = "formátovat datum (ms) %1 formátem %2 a jazykem %3";
 
 Blockly.Msg["BLOCK_DATE_MILLIS_TO_UNIT"] = "millisekundy na %1 %2";
 Blockly.Msg["BLOCK_SEQUENCE_NEXT"] = "další číslo z %1 zarovnat na %2 čísel";

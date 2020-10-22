@@ -149,26 +149,133 @@ Blockly.FieldColour.prototype.getText = function() {
  * @type {!Array.<string>}
  */
 Blockly.FieldColour.COLOURS = [
-  // grays
-  '#ffffff', '#cccccc', '#c0c0c0', '#999999', '#666666', '#333333', '#000000',
-  // reds
-  '#ffcccc', '#ff6666', '#ff0000', '#cc0000', '#990000', '#660000', '#330000',
-  // oranges
-  '#ffcc99', '#ff9966', '#ff9900', '#ff6600', '#cc6600', '#993300', '#663300',
-  // yellows
-  '#ffff99', '#ffff66', '#ffcc66', '#ffcc33', '#cc9933', '#996633', '#663333',
-  // olives
-  '#ffffcc', '#ffff33', '#ffff00', '#ffcc00', '#999900', '#666600', '#333300',
-  // greens
-  '#99ff99', '#66ff99', '#33ff33', '#33cc00', '#009900', '#006600', '#003300',
-  // turquoises
-  '#99ffff', '#33ffff', '#66cccc', '#00cccc', '#339999', '#336666', '#003333',
-  // blues
-  '#ccffff', '#66ffff', '#33ccff', '#3366ff', '#3333ff', '#000099', '#000066',
-  // purples
-  '#ccccff', '#9999ff', '#6666cc', '#6633ff', '#6600cc', '#333399', '#330099',
-  // violets
-  '#ffccff', '#ff99ff', '#cc66cc', '#cc33cc', '#993399', '#663366', '#330033'
+  '#000000', '#263238', '#37474f', '#455a64', '#546e7a', '#607d8b', '#78909c', '#90a4ae', '#b0bec5', '#cfd8dc', '#eceff1', '#ffffff',
+  '#101010', '#212121', '#424242', '#616161', '#757575', '#9e9e9e', '#bdbdbd', '#e0e0e0', '#eeeeee', '#f5f5f5', '#fafafa', '#00b388',
+
+  '#f44336', // red
+  '#e91e63', // pink
+  '#9c27b0', // purple
+  '#673ab7', // deep-purple
+  '#3f51b5', // indigo
+  '#2196f3', // blue
+  '#03a9f4', // light-blue
+  '#009688', // teal
+  '#4caf50', // green
+  '#8bc34a', // light-green
+  '#ffeb3b', // yellow
+  '#ff5722', // deep-orange
+
+  // 100
+  '#ffcdd2', // red
+  '#f8bbd0', // pink
+  '#e1bee7', // purple
+  '#d1c4e9', // deep-purple
+  '#c5cae9', // indigo
+  '#bbdefb', // blue
+  '#b3e5fc', // light-blue
+  '#b2dfdb', // teal
+  '#c8e6c9', // green
+  '#dcedc8', // light-green
+  '#fff9c4', // yellow
+  '#ffccbc', // deep-orange
+
+  // 200
+  '#ef9a9a', // red
+  '#f48fb1', // pink
+  '#ce93d8', // purple
+  '#b39ddb', // deep-purple
+  '#9fa8da', // indigo
+  '#90caf9', // blue
+  '#81d4fa', // light-blue
+  '#80cbc4', // teal
+  '#a5d6a7', // green
+  '#c5e1a5', // light-green
+  '#fff59d', // yellow
+  '#ffab91', // deep-orange
+
+  // 300
+  '#e57373', // red
+  '#f06292', // pink
+  '#ba68c8', // purple
+  '#9575cd', // deep-purple
+  '#7986cb', // indigo
+  '#64b5f6', // blue
+  '#4fc3f7', // light-blue
+  '#4db6ac', // teal
+  '#81c784', // green
+  '#aed581', // light-green
+  '#fff176', // yellow
+  '#ff8a65', // deep-orange
+
+  // 400
+  '#ef5350', // red
+  '#ec407a', // pink
+  '#ab47bc', // purple
+  '#7e57c2', // deep-purple
+  '#5c6bc0', // indigo
+  '#42a5f5', // blue
+  '#29b6f6', // light-blue
+  '#26a69a', // teal
+  '#66bb6a', // green
+  '#9ccc65', // light-green
+  '#ffee58', // yellow
+  '#ff7043', // deep-orange
+
+  // 600
+  '#e53935', // red
+  '#d81b60', // pink
+  '#8e24aa', // purple
+  '#5e35b1', // deep-purple
+  '#3949ab', // indigo
+  '#1e88e5', // blue
+  '#039be5', // light-blue
+  '#00897b', // teal
+  '#43a047', // green
+  '#7cb342', // light-green
+  '#fdd835', // yellow
+  '#f4511e', // deep-orange
+
+  // 700
+  '#d32f2f', // red
+  '#c2185b', // pink
+  '#7b1fa2', // purple
+  '#512da8', // deep-purple
+  '#303f9f', // indigo
+  '#1976d2', // blue
+  '#0288d1', // light-blue
+  '#00796b', // teal
+  '#388e3c', // green
+  '#689f38', // light-green
+  '#fbc02d', // yellow
+  '#e64a19', // deep-orange
+
+  // 800
+  '#c62828', // red
+  '#ad1457', // pink
+  '#6a1b9a', // purple
+  '#4527a0', // deep-purple
+  '#283593', // indigo
+  '#1565c0', // blue
+  '#0277bd', // light-blue
+  '#00695c', // teal
+  '#2e7d32', // green
+  '#558b2f', // light-green
+  '#f9a825', // yellow
+  '#d84315', // deep-orange
+
+  // 900
+  '#b71c1c', // red
+  '#880e4f', // pink
+  '#4a148c', // purple
+  '#311b92', // deep-purple
+  '#1a237e', // indigo
+  '#0d47a1', // blue
+  '#01579b', // light-blue
+  '#004d40', // teal
+  '#1b5e20', // green
+  '#33691e', // light-green
+  '#f57f17', // yellow
+  '#bf360c', // deep-orange
 ];
 
 /**
@@ -183,7 +290,7 @@ Blockly.FieldColour.TITLES = [];
  * Number of columns in the palette.
  * All colour pickers use this unless overridden with setColumns.
  */
-Blockly.FieldColour.COLUMNS = 7;
+Blockly.FieldColour.COLUMNS = 12;
 
 /**
  * Set a custom colour grid for this field.
