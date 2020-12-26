@@ -470,6 +470,7 @@ Blockly.Msg["BLOCK_DATE_NOW"] = "now (ms)";
 Blockly.Msg["BLOCK_CURRENT_DATE"] = "now (date)";
 Blockly.Msg["BLOCK_PARSE_DATE"] = "parse date string %1 formatted as %2 with locale %3";
 Blockly.Msg["BLOCK_FORMAT_DATE"] = "format date (ms) %1 using format %2 and locale %3";
+Blockly.Msg["BLOCK_CREATE_DOCUMENT"] = "create record in %1";
 
 Blockly.Msg["BLOCK_DATE_MILLIS_TO_UNIT"] = "milliseconds to %1 %2";
 Blockly.Msg["BLOCK_SEQUENCE_NEXT"] = "next no. from %1 align to %2 digit(s)";

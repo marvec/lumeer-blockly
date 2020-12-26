@@ -474,6 +474,7 @@ Blockly.Msg["BLOCK_FORMAT_DATE"] = "formátovat datum (ms) %1 formátem %2 a jaz
 Blockly.Msg["BLOCK_DATE_MILLIS_TO_UNIT"] = "millisekundy na %1 %2";
 Blockly.Msg["BLOCK_SEQUENCE_NEXT"] = "další číslo z %1 zarovnat na %2 čísel";
 Blockly.Msg["BLOCK_CURRENT_USER"] = "aktuální uživatel";
+Blockly.Msg["BLOCK_CREATE_DOCUMENT"] = "vytvoř záznam v %1";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
