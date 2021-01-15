@@ -482,6 +482,9 @@ Blockly.Msg["BLOCK_CREATE_DOCUMENT"] = "create record in %1";
 Blockly.Msg["BLOCK_DELETE_DOCUMENT"] = "delete record %1";
 Blockly.Msg["BLOCK_IS_EMPTY"] = "is empty %1";
 Blockly.Msg["BLOCK_IS_NOT_EMPTY"] = "is not empty %1";
+Blockly.Msg["BLOCK_SHIFT_DATE_OF"] = "%1 of %2 in %3";
+Blockly.Msg["BLOCK_ISO_TO_DATE"] = "ISO to date %1";
+Blockly.Msg["BLOCK_ISO_TO_MILLIS"] = "ISO to millis %1";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";

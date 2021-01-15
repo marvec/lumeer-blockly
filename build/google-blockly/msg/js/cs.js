@@ -482,6 +482,9 @@ Blockly.Msg["BLOCK_CREATE_DOCUMENT"] = "vytvoř záznam v %1";
 Blockly.Msg["BLOCK_DELETE_DOCUMENT"] = "smaž záznam %1";
 Blockly.Msg["BLOCK_IS_EMPTY"] = "prázdné %1";
 Blockly.Msg["BLOCK_IS_NOT_EMPTY"] = "neprázdné %1";
+Blockly.Msg["BLOCK_SHIFT_DATE_OF"] = "%1 %2 v %3";
+Blockly.Msg["BLOCK_ISO_TO_DATE"] = "ISO na datum %1";
+Blockly.Msg["BLOCK_ISO_TO_MILLIS"] = "ISO to milisekundy %1";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
