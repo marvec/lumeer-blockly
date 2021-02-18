@@ -485,6 +485,9 @@ Blockly.Msg["BLOCK_IS_NOT_EMPTY"] = "neprázdné %1";
 Blockly.Msg["BLOCK_SHIFT_DATE_OF"] = "%1 %2 v %3";
 Blockly.Msg["BLOCK_ISO_TO_DATE"] = "ISO na datum %1";
 Blockly.Msg["BLOCK_ISO_TO_MILLIS"] = "ISO to milisekundy %1";
+Blockly.Msw["BLOCK_PRINT_ATTRIBUTE"] = "vytisknout %1 z %2";
+Blockly.Msg["BLOCK_STRING_REPLACE"] = "v řetězci %1 nahraď vzorek %2 za %3";
+Blockly.Msg["BLOCK_NAVIGATE"] = "otevři pohled %1 zaměřený na záznam %2";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
