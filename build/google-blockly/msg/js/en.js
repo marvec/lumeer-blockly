@@ -485,7 +485,7 @@ Blockly.Msg["BLOCK_IS_NOT_EMPTY"] = "is not empty %1";
 Blockly.Msg["BLOCK_SHIFT_DATE_OF"] = "%1 of %2 in %3";
 Blockly.Msg["BLOCK_ISO_TO_DATE"] = "ISO to date %1";
 Blockly.Msg["BLOCK_ISO_TO_MILLIS"] = "ISO to millis %1";
-Blockly.Msw["BLOCK_PRINT_ATTRIBUTE"] = "print %1 of %2";
+Blockly.Msg["BLOCK_PRINT_ATTRIBUTE"] = "print %1 of %2";
 Blockly.Msg["BLOCK_STRING_REPLACE"] = "in string %1 replace pattern %2 with %3";
 Blockly.Msg["BLOCK_NAVIGATE"] = "open view %1 focused on record %2";
 
