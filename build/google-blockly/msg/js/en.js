@@ -487,7 +487,12 @@ Blockly.Msg["BLOCK_ISO_TO_DATE"] = "ISO to date %1";
 Blockly.Msg["BLOCK_ISO_TO_MILLIS"] = "ISO to millis %1";
 Blockly.Msg["BLOCK_PRINT_ATTRIBUTE"] = "print %1 of %2";
 Blockly.Msg["BLOCK_STRING_REPLACE"] = "in string %1 replace pattern %2 with %3";
-Blockly.Msg["BLOCK_NAVIGATE"] = "open view %1 focused on record %2";
+Blockly.Msg["BLOCK_DELETE_DOCUMENT"] = "delete record %1";
+Blockly.Msg["BLOCK_LINK_DOCUMENTS_NO_RETURN"] = "link records via %1 %2 %3";
+Blockly.Msg["BLOCK_LINK_DOCUMENTS_RETURN"] = "link records via %1 %2 %3";
+Blockly.Msg["BLOCK_READ_DOCUMENTS"] = "read records from %1";
+Blockly.Msg["BLOCK_SEND_EMAIL"] = "send email to address %1 with subject %2 and body %3";
+Blockly.Msg["BLOCK_NAVIGATE_TO_VIEW"] = "navigate to view %1 %2 in %3 browser tab %4 with the sidebar %5 %6 and focus on record %7";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";

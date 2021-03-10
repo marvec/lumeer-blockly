@@ -487,7 +487,12 @@ Blockly.Msg["BLOCK_ISO_TO_DATE"] = "ISO na datum %1";
 Blockly.Msg["BLOCK_ISO_TO_MILLIS"] = "ISO to milisekundy %1";
 Blockly.Msg["BLOCK_PRINT_ATTRIBUTE"] = "vytisknout %1 z %2";
 Blockly.Msg["BLOCK_STRING_REPLACE"] = "v řetězci %1 nahraď vzorek %2 za %3";
-Blockly.Msg["BLOCK_NAVIGATE"] = "otevři pohled %1 zaměřený na záznam %2";
+Blockly.Msg["BLOCK_DELETE_DOCUMENT"] = "smaž záznam %1";
+Blockly.Msg["BLOCK_LINK_DOCUMENTS_NO_RETURN"] = "propoj záznamy pomocí %1 %2 %3";
+Blockly.Msg["BLOCK_LINK_DOCUMENTS_RETURN"] = "propoj záznamy pomocí %1 %2 %3";
+Blockly.Msg["BLOCK_READ_DOCUMENTS"] = "přečti záznamy z %1";
+Blockly.Msg["BLOCK_SEND_EMAIL"] = "pošli email na adresu %1 s předmětem %2 a textem %3";
+Blockly.Msg["BLOCK_NAVIGATE_TO_VIEW"] = "otevři pohled %1 %2 v(e) %3 okně prohlížeče %4 s %5 postranním panelem %6 a ukaž záznam %7";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
