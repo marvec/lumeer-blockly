@@ -493,6 +493,10 @@ Blockly.Msg["BLOCK_LINK_DOCUMENTS_RETURN"] = "link records via %1 %2 %3";
 Blockly.Msg["BLOCK_READ_DOCUMENTS"] = "read records from %1";
 Blockly.Msg["BLOCK_SEND_EMAIL"] = "send email to address %1 with subject %2 and body %3";
 Blockly.Msg["BLOCK_NAVIGATE_TO_VIEW"] = "navigate to view %1 %2 in %3 browser tab %4 with the sidebar %5 %6 and focus on record %7";
+Blockly.Msg["BLOCK_GET_SIBLINGS"] = "get siblings via %1 %2"
+Blockly.Msg["BLOCK_GET_PARENT_DOCUMENT"] = "get parent in hierarchy %1"
+Blockly.Msg["BLOCK_GET_CHILD_DOCUMENTS"] = "get children in hierarchy %1"
+Blockly.Msg["BLOCK_GET_HIERARCHY_SIBLINGS"] = "get siblings in hierarchy %1"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";

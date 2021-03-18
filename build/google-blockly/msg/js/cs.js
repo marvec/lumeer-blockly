@@ -493,6 +493,10 @@ Blockly.Msg["BLOCK_LINK_DOCUMENTS_RETURN"] = "propoj záznamy pomocí %1 %2 %3";
 Blockly.Msg["BLOCK_READ_DOCUMENTS"] = "přečti záznamy z %1";
 Blockly.Msg["BLOCK_SEND_EMAIL"] = "pošli email na adresu %1 s předmětem %2 a textem %3";
 Blockly.Msg["BLOCK_NAVIGATE_TO_VIEW"] = "otevři pohled %1 %2 v(e) %3 okně prohlížeče %4 s %5 postranním panelem %6 a ukaž záznam %7";
+Blockly.Msg["BLOCK_GET_SIBLINGS"] = "sourozenci přes %1 %2"
+Blockly.Msg["BLOCK_GET_PARENT_DOCUMENT"] = "rodič v hierarchii %1"
+Blockly.Msg["BLOCK_GET_CHILD_DOCUMENTS"] = "potomci v hierarchii %1"
+Blockly.Msg["BLOCK_GET_HIERARCHY_SIBLINGS"] = "sourozenci v hierarchii %1"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
