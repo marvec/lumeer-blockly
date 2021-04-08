@@ -497,6 +497,12 @@ Blockly.Msg["BLOCK_GET_SIBLINGS"] = "get siblings via %1 %2"
 Blockly.Msg["BLOCK_GET_PARENT_DOCUMENT"] = "get parent in hierarchy %1"
 Blockly.Msg["BLOCK_GET_CHILD_DOCUMENTS"] = "get children in hierarchy %1"
 Blockly.Msg["BLOCK_GET_HIERARCHY_SIBLINGS"] = "get siblings in hierarchy %1"
+Blockly.Msg["BLOCK_PRINT_TEXT"] = "print text %1"
+Blockly.Msg["BLOCK_ESCAPE_HTML"] = "escape html %1"
+Blockly.Msg["BLOCK_UNESCAPE_HTML"] = "unescape html %1"
+Blockly.Msg["BLOCK_LOOP_BREAK"] = "break"
+Blockly.Msg["BLOCK_LOOP_CONTINUE"] = "continue"
+Blockly.Msg["BLOCK_FORMAT_CURRENCY"] = "format currency in locale %1 with %2 decimals %3"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";

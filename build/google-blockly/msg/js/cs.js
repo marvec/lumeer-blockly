@@ -497,6 +497,12 @@ Blockly.Msg["BLOCK_GET_SIBLINGS"] = "sourozenci přes %1 %2"
 Blockly.Msg["BLOCK_GET_PARENT_DOCUMENT"] = "rodič v hierarchii %1"
 Blockly.Msg["BLOCK_GET_CHILD_DOCUMENTS"] = "potomci v hierarchii %1"
 Blockly.Msg["BLOCK_GET_HIERARCHY_SIBLINGS"] = "sourozenci v hierarchii %1"
+Blockly.Msg["BLOCK_PRINT_TEXT"] = "vytisknout text %1"
+Blockly.Msg["BLOCK_ESCAPE_HTML"] = "escapovat html v %1"
+Blockly.Msg["BLOCK_UNESCAPE_HTML"] = "odescapovat html v %1"
+Blockly.Msg["BLOCK_LOOP_BREAK"] = "break"
+Blockly.Msg["BLOCK_LOOP_CONTINUE"] = "continue"
+Blockly.Msg["BLOCK_FORMAT_CURRENCY"] = "formátovat měnu země %1 na %2 desetin. míst %3"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
