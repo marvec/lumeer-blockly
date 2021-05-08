@@ -437,6 +437,7 @@ Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 // Lumeer specific
 Blockly.Msg["TOOLBOX_DOCUMENTS"] = "Records";
 Blockly.Msg["TOOLBOX_LINKS"] = "Links";
+Blockly.Msg["TOOLBOX_VIEWS"] = "Views";
 Blockly.Msg["TOOLBOX_LOOPS"] = "Loops";
 Blockly.Msg["TOOLBOX_LOGIC"] = "Logic";
 Blockly.Msg["TOOLBOX_CONTROLS"] = "Controls";
@@ -493,6 +494,8 @@ Blockly.Msg["BLOCK_LINK_DOCUMENTS_RETURN"] = "link records via %1 %2 %3";
 Blockly.Msg["BLOCK_READ_DOCUMENTS"] = "read records from %1";
 Blockly.Msg["BLOCK_SEND_EMAIL"] = "send email to address %1 with subject %2 and body %3";
 Blockly.Msg["BLOCK_NAVIGATE_TO_VIEW"] = "navigate to view %1 %2 in %3 browser tab %4 with the sidebar %5 %6 and focus on record %7";
+Blockly.Msg["BLOCK_NAVIGATE_TO_VIEW_BY_ID"] = "navigate to view %1 in %2 browser tab %3 with the sidebar %4 %5 and focus on record %6";
+Blockly.Msg["BLOCK_SHARE_VIEW"] = "share view %1 with user %2 and %3 access";
 Blockly.Msg["BLOCK_GET_SIBLINGS"] = "get siblings via %1 %2"
 Blockly.Msg["BLOCK_GET_PARENT_DOCUMENT"] = "get parent in hierarchy %1"
 Blockly.Msg["BLOCK_GET_CHILD_DOCUMENTS"] = "get children in hierarchy %1"
@@ -503,6 +506,12 @@ Blockly.Msg["BLOCK_UNESCAPE_HTML"] = "unescape html %1"
 Blockly.Msg["BLOCK_LOOP_BREAK"] = "break"
 Blockly.Msg["BLOCK_LOOP_CONTINUE"] = "continue"
 Blockly.Msg["BLOCK_FORMAT_CURRENCY"] = "format currency in locale %1 with %2 decimals %3"
+Blockly.Msg["BLOCK_IS_ARRAY"] = "is array %1"
+Blockly.Msg["BLOCK_IS_NUMBER"] = "is number %1"
+Blockly.Msg["BLOCK_IS_BOOLEAN"] = "is boolean %1"
+Blockly.Msg["BLOCK_IS_STRING"] = "is string %1"
+Blockly.Msg["BLOCK_COUNT_OCCURRENCES"] = "count occurrences of %1 in %2"
+Blockly.Msg["BLOCK_FILTER_OBJECTS"] = "filter objects where %1 = %2 in %3"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";

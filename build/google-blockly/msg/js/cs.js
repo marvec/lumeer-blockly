@@ -437,6 +437,7 @@ Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 // Lumeer specific
 Blockly.Msg["TOOLBOX_DOCUMENTS"] = "Záznamy";
 Blockly.Msg["TOOLBOX_LINKS"] = "Vazby";
+Blockly.Msg["TOOLBOX_VIEWS"] = "Pohledy";
 Blockly.Msg["TOOLBOX_LOOPS"] = "Cyklus";
 Blockly.Msg["TOOLBOX_LOGIC"] = "Logika";
 Blockly.Msg["TOOLBOX_CONTROLS"] = "Rozhodování";
@@ -493,6 +494,8 @@ Blockly.Msg["BLOCK_LINK_DOCUMENTS_RETURN"] = "propoj záznamy pomocí %1 %2 %3";
 Blockly.Msg["BLOCK_READ_DOCUMENTS"] = "přečti záznamy z %1";
 Blockly.Msg["BLOCK_SEND_EMAIL"] = "pošli email na adresu %1 s předmětem %2 a textem %3";
 Blockly.Msg["BLOCK_NAVIGATE_TO_VIEW"] = "otevři pohled %1 %2 v(e) %3 okně prohlížeče %4 s %5 postranním panelem %6 a ukaž záznam %7";
+Blockly.Msg["BLOCK_NAVIGATE_TO_VIEW_BY_ID"] = "otevři pohled %1 v(e) %2 okně prohlížeče %3 s %4 postranním panelem %5 a ukaž záznam %6";
+Blockly.Msg["BLOCK_SHARE_VIEW"] = "sdílej pohled %1 s uživatelem %2 s právem na %3";
 Blockly.Msg["BLOCK_GET_SIBLINGS"] = "sourozenci přes %1 %2"
 Blockly.Msg["BLOCK_GET_PARENT_DOCUMENT"] = "rodič v hierarchii %1"
 Blockly.Msg["BLOCK_GET_CHILD_DOCUMENTS"] = "potomci v hierarchii %1"
@@ -503,6 +506,12 @@ Blockly.Msg["BLOCK_UNESCAPE_HTML"] = "odescapovat html v %1"
 Blockly.Msg["BLOCK_LOOP_BREAK"] = "break"
 Blockly.Msg["BLOCK_LOOP_CONTINUE"] = "continue"
 Blockly.Msg["BLOCK_FORMAT_CURRENCY"] = "formátovat měnu země %1 na %2 desetin. míst %3"
+Blockly.Msg["BLOCK_IS_ARRAY"] = "je pole %1"
+Blockly.Msg["BLOCK_IS_NUMBER"] = "je číslo %1"
+Blockly.Msg["BLOCK_IS_BOOLEAN"] = "je boolean %1"
+Blockly.Msg["BLOCK_IS_STRING"] = "je řetězec %1"
+Blockly.Msg["BLOCK_COUNT_OCCURRENCES"] = "počet výskytů %1 v %2"
+Blockly.Msg["BLOCK_FILTER_OBJECTS"] = "filtruj objekty, kde %1 = %2 v %3"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
