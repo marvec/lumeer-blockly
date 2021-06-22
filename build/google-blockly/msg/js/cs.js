@@ -512,6 +512,10 @@ Blockly.Msg["BLOCK_IS_BOOLEAN"] = "je boolean %1"
 Blockly.Msg["BLOCK_IS_STRING"] = "je řetězec %1"
 Blockly.Msg["BLOCK_COUNT_OCCURRENCES"] = "počet výskytů %1 v %2"
 Blockly.Msg["BLOCK_FILTER_OBJECTS"] = "filtruj objekty, kde %1 = %2 v %3"
+Blockly.Msg["BLOCK_GET_DOCUMENT_CREATED_AUTHOR"] = "autor záznamu %1"
+Blockly.Msg["BLOCK_GET_DOCUMENT_CREATED_DATE"] = "datum vytvoření %1"
+Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_AUTHOR"] = "poslední editor %1"
+Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_DATE"] = "datum poslední změny %1"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";

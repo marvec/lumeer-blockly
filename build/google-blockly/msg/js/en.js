@@ -512,6 +512,10 @@ Blockly.Msg["BLOCK_IS_BOOLEAN"] = "is boolean %1"
 Blockly.Msg["BLOCK_IS_STRING"] = "is string %1"
 Blockly.Msg["BLOCK_COUNT_OCCURRENCES"] = "count occurrences of %1 in %2"
 Blockly.Msg["BLOCK_FILTER_OBJECTS"] = "filter objects where %1 = %2 in %3"
+Blockly.Msg["BLOCK_GET_DOCUMENT_CREATED_AUTHOR"] = "get author of %1"
+Blockly.Msg["BLOCK_GET_DOCUMENT_CREATED_DATE"] = "get creation date of %1"
+Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_AUTHOR"] = "get last editor of %1"
+Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_DATE"] = "get last update date of %1"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";
