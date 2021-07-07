@@ -185,7 +185,8 @@ Blockly.svgResize = function(workspace) {
 // are multiple workspaces and non-main workspaces are able to accept input.
 Blockly.onKeyDown_ = function(e) {
   var workspace = Blockly.mainWorkspace;
-  if (workspace.options.readOnly || Blockly.utils.isTargetInput(e)
+  var realWorkspace = !!workspace ? Blockly.Workspace.getById(workspace.id) : null;
+  if (!realWorkspace || workspace.options.readOnly || Blockly.utils.isTargetInput(e)
       || (workspace.rendered && !workspace.isVisible())) {
     // No key actions on readonly workspaces.
     // When focused on an HTML text input widget, don't trap any keys.
