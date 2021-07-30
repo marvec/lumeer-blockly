@@ -468,7 +468,7 @@ Blockly.Msg["BLOCK_LINK_INSTANCE_ATTRS"] = "attrs. of";
 Blockly.Msg["BLOCK_DATE_CHANGE"] = "%1 %2 %3 to/from/in date %4";
 Blockly.Msg["BLOCK_DATE_TO_ISO"] = "date to ISO %1";
 Blockly.Msg["BLOCK_DATE_TO_MS"] = "date to millis %1";
-Blockly.Msg["BLOCK_MS_TO_DATE"] = "millis to date %1";
+Blockly.Msg["BLOCK_MS_TO_DATE"] = "millis to ISO %1";
 Blockly.Msg["BLOCK_DATE_NOW"] = "now (ISO)";
 Blockly.Msg["BLOCK_DATE_NOW_MS"] = "now (ms)";
 Blockly.Msg["BLOCK_CURRENT_DATE"] = "now (date)";
@@ -516,6 +516,8 @@ Blockly.Msg["BLOCK_GET_DOCUMENT_CREATED_AUTHOR"] = "get author of %1"
 Blockly.Msg["BLOCK_GET_DOCUMENT_CREATED_DATE"] = "get creation date of %1"
 Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_AUTHOR"] = "get last editor of %1"
 Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_DATE"] = "get last update date of %1"
+Blockly.Msg["BLOCK_CURRENT_TEAMS"] = "current teams"
+Blockly.Msg["BLOCK_IS_USER_IN_TEAM"] = "is user in team %1"
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";
