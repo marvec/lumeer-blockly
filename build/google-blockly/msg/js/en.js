@@ -488,6 +488,7 @@ Blockly.Msg["BLOCK_ISO_TO_DATE"] = "ISO to date %1";
 Blockly.Msg["BLOCK_ISO_TO_MILLIS"] = "ISO to millis %1";
 Blockly.Msg["BLOCK_PRINT_ATTRIBUTE"] = "print %1 of %2";
 Blockly.Msg["BLOCK_STRING_REPLACE"] = "in string %1 replace pattern %2 using pattern flags %3 with string %4";
+Blockly.Msg["BLOCK_REPLACE_PATTERN"] = "in text or HTML %1 replace patterns %2 patterns are split using %3";
 Blockly.Msg["BLOCK_DELETE_DOCUMENT"] = "delete record %1";
 Blockly.Msg["BLOCK_LINK_DOCUMENTS_NO_RETURN"] = "link records via %1 %2 %3";
 Blockly.Msg["BLOCK_LINK_DOCUMENTS_RETURN"] = "link records via %1 %2 %3";

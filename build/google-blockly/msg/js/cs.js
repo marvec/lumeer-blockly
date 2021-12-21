@@ -488,6 +488,7 @@ Blockly.Msg["BLOCK_ISO_TO_DATE"] = "ISO na datum %1";
 Blockly.Msg["BLOCK_ISO_TO_MILLIS"] = "ISO na milisekundy %1";
 Blockly.Msg["BLOCK_PRINT_ATTRIBUTE"] = "vytisknout %1 z %2";
 Blockly.Msg["BLOCK_STRING_REPLACE"] = "v řetězci %1 nahraď vzorek %2 za použítí příznaků %3 za řetězec %4";
+Blockly.Msg["BLOCK_REPLACE_PATTERN"] = "v textu nebo HTML %1 nahraď vzorky %2 vzorky jsou rozděleny pomocí %3";
 Blockly.Msg["BLOCK_DELETE_DOCUMENT"] = "smaž záznam %1";
 Blockly.Msg["BLOCK_LINK_DOCUMENTS_NO_RETURN"] = "propoj záznamy pomocí %1 %2 %3";
 Blockly.Msg["BLOCK_LINK_DOCUMENTS_RETURN"] = "propoj záznamy pomocí %1 %2 %3";
