@@ -523,10 +523,14 @@ Blockly.Msg["BLOCK_GET_DOCUMENT_CREATED_DATE"] = "get creation date of %1"
 Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_AUTHOR"] = "get last editor of %1"
 Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_DATE"] = "get last update date of %1"
 Blockly.Msg["BLOCK_CURRENT_TEAMS"] = "current teams"
+Blockly.Msg["BLOCK_GET_USER_TEAMS"] = "get user teams %1"
+Blockly.Msg["BLOCK_GET_USER_TEAM_IDS"] = "get user team IDs %1"
 Blockly.Msg["BLOCK_IS_USER_IN_TEAM"] = "is user in team %1"
 Blockly.Msg["BLOCK_GET_RESOURCE_VARIABLE"] = "get value of project variable %1";
 Blockly.Msg["BLOCK_MERGE_ARRAYS"] = "merge array %1 and array %2 using delimiter %3";
 Blockly.Msg["BLOCK_REMOVE_DOCUMENTS_IN_VIEW"] = "remove documents in view %1";
+Blockly.Msg["BLOCK_COPY_DOCUMENT_VALUES_SIMPLE"] = "copy values from %1 to %2";
+Blockly.Msg["BLOCK_COPY_DOCUMENT_VALUES"] = "copy values from attributes %1 in %2 to attributes %3 in %4";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";

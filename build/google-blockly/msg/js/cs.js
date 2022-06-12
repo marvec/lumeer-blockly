@@ -523,10 +523,15 @@ Blockly.Msg["BLOCK_GET_DOCUMENT_CREATED_DATE"] = "datum vytvoření %1"
 Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_AUTHOR"] = "poslední editor %1"
 Blockly.Msg["BLOCK_GET_DOCUMENT_UPDATED_DATE"] = "datum poslední změny %1"
 Blockly.Msg["BLOCK_CURRENT_TEAMS"] = "aktuální týmy"
+Blockly.Msg["BLOCK_GET_USER_TEAMS"] = "vrať týmy uživatele %1"
+Blockly.Msg["BLOCK_GET_USER_TEAM_IDS"] = "vrať ID týmů uživatele %1"
 Blockly.Msg["BLOCK_IS_USER_IN_TEAM"] = "je uživatel v týmu %1"
 Blockly.Msg["BLOCK_GET_RESOURCE_VARIABLE"] = "vrať hodnotu projektové proměnné %1";
 Blockly.Msg["BLOCK_MERGE_ARRAYS"] = "smíchej seznam %1 a seznam %2 pomocí rozdělovače %3";
 Blockly.Msg["BLOCK_REMOVE_DOCUMENTS_IN_VIEW"] = "odstraň záznamy v pohledu %1";
+Blockly.Msg["BLOCK_COPY_DOCUMENT_VALUES_SIMPLE"] = "okopíruj hodnoty z %1 do %2";
+Blockly.Msg["BLOCK_COPY_DOCUMENT_VALUES"] = "okopíruj hodnoty atributů %1 z %2 do atributů %3 v %4";
+
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
