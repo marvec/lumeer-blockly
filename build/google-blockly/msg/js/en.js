@@ -531,6 +531,7 @@ Blockly.Msg["BLOCK_MERGE_ARRAYS"] = "merge array %1 and array %2 using delimiter
 Blockly.Msg["BLOCK_REMOVE_DOCUMENTS_IN_VIEW"] = "remove documents in view %1";
 Blockly.Msg["BLOCK_COPY_DOCUMENT_VALUES_SIMPLE"] = "copy values from %1 to %2";
 Blockly.Msg["BLOCK_COPY_DOCUMENT_VALUES"] = "copy values from attributes %1 in %2 to attributes %3 in %4";
+Blockly.Msg["BLOCK_GET_RECORDS_COUNT"] = "records count %1";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";
