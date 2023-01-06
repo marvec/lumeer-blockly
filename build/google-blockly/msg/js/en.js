@@ -534,6 +534,8 @@ Blockly.Msg["BLOCK_COPY_DOCUMENT_VALUES"] = "copy values from attributes %1 in %
 Blockly.Msg["BLOCK_GET_RECORDS_COUNT"] = "records count %1";
 Blockly.Msg["BLOCK_DISPLAY_TEXT"] = "display text %1"
 Blockly.Msg["BLOCK_DISPLAY_ATTRIBUTE"] = "display %1 of %2";
+Blockly.Msg["BLOCK_GET_SELECTION_LIST_VALUES"] = "get values of selection list %1";
+Blockly.Msg["BLOCK_GET_SELECTION_LIST_DISPLAY_VALUES"] = "get display values of selection list %1";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "seconds";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minutes";

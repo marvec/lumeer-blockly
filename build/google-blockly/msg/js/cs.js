@@ -534,6 +534,8 @@ Blockly.Msg["BLOCK_COPY_DOCUMENT_VALUES"] = "okopíruj hodnoty atributů %1 z %2
 Blockly.Msg["BLOCK_GET_RECORDS_COUNT"] = "počet záznamů %1";
 Blockly.Msg["BLOCK_DISPLAY_TEXT"] = "zobrazit text %1"
 Blockly.Msg["BLOCK_DISPLAY_ATTRIBUTE"] = "zobrazit %1 z %2";
+Blockly.Msg["BLOCK_GET_SELECTION_LIST_VALUES"] = "vrať hodnoty seznamu %1";
+Blockly.Msg["BLOCK_GET_SELECTION_LIST_DISPLAY_VALUES"] = "vrať zobrazované hodnoty seznamu %1";
 
 Blockly.Msg["SEQUENCE_OPTIONS_SECONDS"] = "vteřiny";
 Blockly.Msg["SEQUENCE_OPTIONS_MINUTES"] = "minuty";
